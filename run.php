@@ -71,7 +71,7 @@ false
         if (strpos($gpy[1], 'PROGRESS')) {
             $qr = curl("https://buy.boku.com/checkout-aux/receive-carrier-flow/transaction-status?transaction-id=$id", null, $boku);
             if (strpos($qr[1], 'url')) {
-                $qr = str_replace("qr-code?width=null&height=null", "", urldecode(json_decode($qr[1])->url));
+                $qr = str_replace("?width=null&height=null", "", urldecode(json_decode($qr[1])->url));
                 echo color("green", "[$qty]") . " Success => $qr\n";
                 file_put_contents("urlpayspotify.txt", "$qr\n", FILE_APPEND);
                 $qty++;
